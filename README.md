@@ -1,6 +1,6 @@
 # personal_expenses_app
 
-A new Flutter project.
+App to track personal expenses, created to practice flutter following this [course](https://www.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps/learn/lecture/14950970#overview)
 
 ## Getting Started
 
