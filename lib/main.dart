@@ -61,27 +61,36 @@ class MyHomePage extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Colors.blue,
+                          color: Colors.purple,
                           width: 2,
                         ),
-                        color: Colors.blue,
                       ),
                       child: Text(
                         "\$${tx.amount}",
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.purple,
                           fontWeight: FontWeight.bold,
-                          fontSize: 17,
+                          fontSize: 20,
                         ),
                       ),
                     ),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           tx.concept,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         Text(
                           tx.date.toString(),
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 15,
+                          ),
                         )
                       ],
                     )
