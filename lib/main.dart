@@ -38,6 +38,8 @@ class MyHomePage extends StatelessWidget {
         title: Text("Flutter App"),
       ),
       body: Column(
+        //mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
             child: Card(
@@ -46,6 +48,28 @@ class MyHomePage extends StatelessWidget {
             ),
             height: 100,
             width: 300,
+          ),
+          Card(
+            elevation: 5,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  TextField(
+                    decoration: InputDecoration(labelText: "Concept"),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(labelText: "Amount"),
+                  ),
+                  RaisedButton(
+                    child: Text("Add Transaction"),
+                    textColor: Colors.purple,
+                    onPressed: () {},
+                  )
+                ],
+              ),
+            ),
           ),
           Column(
             children: transaction.map((tx) {
@@ -100,17 +124,7 @@ class MyHomePage extends StatelessWidget {
               );
             }).toList(),
           )
-          /*SizedBox(
-            child: Card(
-              child: Text("List of Transactions!"),
-              color: Colors.red,
-            ),
-            height: 50,
-            width: 200,
-          ),*/
         ],
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
       ),
     );
   }
