@@ -31,6 +31,9 @@ class MyHomePage extends StatelessWidget {
     )
   ];
 
+  final conceptController = TextEditingController();
+  final amountController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,14 +61,19 @@ class MyHomePage extends StatelessWidget {
                 children: [
                   TextField(
                     decoration: InputDecoration(labelText: "Concept"),
+                    controller: conceptController,
                   ),
                   TextField(
                     decoration: InputDecoration(labelText: "Amount"),
+                    controller: amountController,
                   ),
                   RaisedButton(
                     child: Text("Add Transaction"),
                     textColor: Colors.purple,
-                    onPressed: () {},
+                    onPressed: () {
+                      print(
+                          "concepto: $conceptController amount: $amountController");
+                    },
                   )
                 ],
               ),
