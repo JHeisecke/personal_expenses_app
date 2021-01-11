@@ -26,10 +26,23 @@ class _TransactionsSectionState extends State<TransactionsSection> {
     )
   ];
 
+  void _addNewTransaction(String concepto, double amount) {
+    final newTransaction = Transaction(
+      concept: concepto,
+      amount: amount,
+      date: DateTime.now(),
+      id: DateTime.now().toString(),
+    );
+
+    setState(() {
+      _userTransactions.add(newTransaction);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      TransactionForm(),
+      TransactionForm(_addNewTransaction),
       Transactions(_userTransactions),
     ]);
   }

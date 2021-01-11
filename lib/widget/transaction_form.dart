@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 class TransactionForm extends StatelessWidget {
   final conceptController = TextEditingController();
   final amountController = TextEditingController();
+  final Function addNewTransaction;
+
+  TransactionForm(this.addNewTransaction);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,10 @@ class TransactionForm extends StatelessWidget {
               child: Text("Add Transaction"),
               textColor: Colors.purple,
               onPressed: () {
-                print("concepto: $conceptController amount: $amountController");
+                addNewTransaction(
+                  conceptController.text,
+                  double.parse(amountController.text),
+                );
               },
             )
           ],
