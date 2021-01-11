@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
-class TransactionForm extends StatelessWidget {
-  final conceptController = TextEditingController();
-  final amountController = TextEditingController();
+class TransactionForm extends StatefulWidget {
   final Function addNewTransaction;
 
   TransactionForm(this.addNewTransaction);
+
+  @override
+  _TransactionFormState createState() => _TransactionFormState();
+}
+
+class _TransactionFormState extends State<TransactionForm> {
+  final conceptController = TextEditingController();
+
+  final amountController = TextEditingController();
 
   void submitData() {
     final concept = conceptController.text;
@@ -13,10 +20,11 @@ class TransactionForm extends StatelessWidget {
     if (concept.isEmpty || amount < 0) {
       return;
     }
-    addNewTransaction(
+    widget.addNewTransaction(
       concept,
       amount,
     );
+    Navigator.of(context).pop();
   }
 
   @override
