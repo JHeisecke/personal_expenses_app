@@ -12,7 +12,31 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Flutter App', home: MyHomePage());
+    return MaterialApp(
+      title: 'Flutter App',
+      home: MyHomePage(),
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+        accentColor: Colors.teal,
+        fontFamily: 'Quicksand',
+        textTheme: ThemeData.light().textTheme.copyWith(
+              headline6: TextStyle(
+                fontFamily: 'Quicksand',
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light().textTheme.copyWith(
+                headline6: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ), // Cambia todos los titles en la app en AppBar
+              ),
+        ),
+      ),
+    );
   }
 }
 
@@ -78,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
               child: Card(
                 child: Text("CHART!"),
-                color: Colors.blue,
+                color: Theme.of(context).primaryColor,
               ),
               height: 100,
               width: 300,
