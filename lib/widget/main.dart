@@ -47,7 +47,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-    Transaction(
+    /*Transaction(
       id: 'id1',
       concept: 'Shoes',
       amount: 102.22,
@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
       concept: 'Lamp',
       amount: 64.12,
       date: DateTime.now(),
-    )
+    )*/
   ];
 
   void _addNewTransaction(String concepto, double amount) {
@@ -97,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Column(
           //mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             SizedBox(
               child: Card(
