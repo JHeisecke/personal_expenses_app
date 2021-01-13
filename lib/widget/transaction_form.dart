@@ -16,14 +16,18 @@ class _TransactionFormState extends State<TransactionForm> {
   final amountController = TextEditingController();
 
   void _submitData() {
+    if (amountController.text.isEmpty) {
+      return;
+    }
     final concept = conceptController.text;
     final amount = double.parse(amountController.text);
-    if (concept.isEmpty || amount < 0) {
+    if (concept.isEmpty || amount < 0 || _transactionDate == null) {
       return;
     }
     widget.addNewTransaction(
       concept,
       amount,
+      _transactionDate,
     );
     Navigator.of(context).pop();
   }
