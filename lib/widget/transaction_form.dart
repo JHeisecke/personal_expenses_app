@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class TransactionForm extends StatefulWidget {
   final Function addNewTransaction;
@@ -11,7 +12,7 @@ class TransactionForm extends StatefulWidget {
 
 class _TransactionFormState extends State<TransactionForm> {
   final conceptController = TextEditingController();
-
+  DateTime _transactionDate;
   final amountController = TextEditingController();
 
   void _submitData() {
@@ -33,7 +34,14 @@ class _TransactionFormState extends State<TransactionForm> {
       initialDate: DateTime.now(),
       firstDate: DateTime(DateTime.now().year),
       lastDate: DateTime.now(),
-    );
+    ).then((dateSelected) {
+      if (dateSelected != null) {
+        setState(() {
+          _transactionDate = dateSelected;
+        });
+      }
+    });
+    //then happens after date is selected but functions still finishes the rest
   }
 
   @override
@@ -60,7 +68,9 @@ class _TransactionFormState extends State<TransactionForm> {
               height: 70,
               child: Row(
                 children: [
-                  Text("No Date Chosen"),
+                  Text(_transactionDate == null
+                      ? "No Date Chosen"
+                      : DateFormat.yMMMd().format(_transactionDate)),
                   FlatButton(
                     textColor: Theme.of(context).primaryColor,
                     child: Text(
