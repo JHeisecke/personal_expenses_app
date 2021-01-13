@@ -68,9 +68,11 @@ class _TransactionFormState extends State<TransactionForm> {
               height: 70,
               child: Row(
                 children: [
-                  Text(_transactionDate == null
-                      ? "No Date Chosen"
-                      : DateFormat.yMMMd().format(_transactionDate)),
+                  Expanded(
+                    child: Text(_transactionDate == null
+                        ? "No Date Chosen"
+                        : DateFormat.yMMMd().format(_transactionDate)),
+                  ),
                   FlatButton(
                     textColor: Theme.of(context).primaryColor,
                     child: Text(
