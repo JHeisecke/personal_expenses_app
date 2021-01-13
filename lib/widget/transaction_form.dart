@@ -14,7 +14,7 @@ class _TransactionFormState extends State<TransactionForm> {
 
   final amountController = TextEditingController();
 
-  void submitData() {
+  void _submitData() {
     final concept = conceptController.text;
     final amount = double.parse(amountController.text);
     if (concept.isEmpty || amount < 0) {
@@ -25,6 +25,15 @@ class _TransactionFormState extends State<TransactionForm> {
       amount,
     );
     Navigator.of(context).pop();
+  }
+
+  void _showdatePicker() {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(DateTime.now().year),
+      lastDate: DateTime.now(),
+    );
   }
 
   @override
@@ -39,18 +48,37 @@ class _TransactionFormState extends State<TransactionForm> {
             TextField(
               decoration: InputDecoration(labelText: "Concept"),
               controller: conceptController,
-              onSubmitted: (_) => submitData(),
+              onSubmitted: (_) => _submitData(),
             ),
             TextField(
               decoration: InputDecoration(labelText: "Amount"),
               keyboardType: TextInputType.number,
               controller: amountController,
-              onSubmitted: (_) => submitData(),
+              onSubmitted: (_) => _submitData(),
+            ),
+            Container(
+              height: 70,
+              child: Row(
+                children: [
+                  Text("No Date Chosen"),
+                  FlatButton(
+                    textColor: Theme.of(context).primaryColor,
+                    child: Text(
+                      "Choose Date",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    onPressed: _showdatePicker,
+                  ),
+                ],
+              ),
             ),
             RaisedButton(
               child: Text("Add Transaction"),
-              textColor: Colors.purple,
-              onPressed: () => submitData,
+              textColor: Theme.of(context).textTheme.button.color,
+              color: Theme.of(context).primaryColor,
+              onPressed: _submitData,
             )
           ],
         ),
