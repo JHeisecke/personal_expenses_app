@@ -106,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final appBar = AppBar(
-      title: Text("Flutter App"),
+      title: Text("Personal Expenses"),
       actions: [
         IconButton(
             icon: Icon(Icons.add),
