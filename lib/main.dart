@@ -106,29 +106,36 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  Widget buildCupertinoAppBar() {
+    return CupertinoNavigationBar(
+      middle: Text("Personal Expenses"),
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          GestureDetector(
+              child: Icon(CupertinoIcons.add),
+              onTap: () => _showNewTransactionForm(context)),
+        ],
+      ),
+    );
+  }
+
+  Widget buildMaterialAppBar() {
+    return AppBar(
+      title: Text("Personal Expenses"),
+      actions: [
+        IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () => _showNewTransactionForm(context)),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final PreferredSizeWidget appBar = Platform.isIOS
-        ? CupertinoNavigationBar(
-            middle: Text("Personal Expenses"),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                GestureDetector(
-                    child: Icon(CupertinoIcons.add),
-                    onTap: () => _showNewTransactionForm(context)),
-              ],
-            ),
-          )
-        : AppBar(
-            title: Text("Personal Expenses"),
-            actions: [
-              IconButton(
-                  icon: Icon(Icons.add),
-                  onPressed: () => _showNewTransactionForm(context)),
-            ],
-          );
+    final PreferredSizeWidget appBar =
+        Platform.isIOS ? buildCupertinoAppBar() : buildMaterialAppBar();
     final pageBody = SafeArea(
         child: SingleChildScrollView(
       child: Column(
